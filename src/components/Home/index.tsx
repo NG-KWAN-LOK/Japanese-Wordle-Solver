@@ -76,8 +76,6 @@ const Home = () => {
   const handleSubmit = () => {
     setAnswer(searchWord(inputText, excludeWord));
   };
-  // console.log(onFocusField);
-  // console.log(isDisable());
 
   return (
     <div className={styles.container}>

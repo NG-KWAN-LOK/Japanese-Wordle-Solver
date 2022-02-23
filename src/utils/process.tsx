@@ -1,7 +1,7 @@
 import words from "./words";
 
-const inputCharIndex = ["charA", "charB", "charC", "charD"];
-let ans = [];
+const inputCharIndex: string[] = ["charA", "charB", "charC", "charD"];
+let ans: string[] = [];
 
 const notCharInRightPos = (word, char, indexOf) => {
   return word[indexOf] != char ? true : false;
