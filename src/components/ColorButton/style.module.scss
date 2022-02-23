@@ -1,0 +1,48 @@
+@import "../../theme";
+.container {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  margin: 0 0 12px 0;
+}
+
+.container_button {
+  width: 48px;
+  text-transform: uppercase;
+  height: 48px;
+  font-weight: bold;
+  font-size: 32px;
+  text-align: center;
+  line-height: 48px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: #fff;
+  padding: 0;
+  margin: 0 10px 0 0;
+  outline: none;
+  cursor: pointer;
+  transition: 0.5s;
+  box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.4), 0 1px 4px 0 rgba(0, 0, 0, 0.4);
+  &:disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
+  &-corr {
+    background: #6aaa64;
+    &:hover:not([disabled]) {
+      background: #315e2d;
+      transition: 0.5s;
+    }
+  }
+  &-pos {
+    background: #c9b458;
+    &:hover:not([disabled]) {
+      background: #86752a;
+      transition: 0.5s;
+    }
+  }
+}

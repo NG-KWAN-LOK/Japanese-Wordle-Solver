@@ -1,0 +1,105 @@
+@import "../../theme";
+.headerContainer {
+  width: 100%;
+  height: 6rem;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  z-index: 2;
+  @media (min-width: 1024px) {
+    height: 9rem;
+    background-color: var(--primary-bg-color);
+  }
+}
+.headerContainer_open {
+  @extend .headerContainer;
+  opacity: 1;
+  transition: 0.3s;
+}
+.headerContainer_close {
+  @extend .headerContainer;
+  opacity: 0;
+  transition: 0.3s;
+}
+.header {
+  display: flex;
+  width: 100%;
+  height: 6rem;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  @media only screen and (max-width: 550px) {
+    font-size: 16px;
+  }
+}
+.phoneHerder {
+  width: 100%;
+  height: 6rem;
+  display: flex;
+  @media only screen and (min-width: 1025px) {
+    display: none;
+  }
+}
+.header_siteTitle {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  color: var(primary-title-color);
+  text-decoration: none;
+  font-size: 1.6rem;
+  font-weight: 600;
+  transition: 0.5s;
+
+  &:hover {
+    color: var(--second-title-color);
+    transition: 0.5s;
+  }
+}
+.header_mainnavButtom {
+  display: flex;
+  position: absolute;
+  flex-wrap: wrap;
+  align-items: center;
+  right: 15px;
+  width: 69px;
+  height: 60px;
+  cursor: pointer;
+  .header_mainnavButtom_icon {
+    display: block;
+    margin: 10px 15px;
+    cursor: pointer;
+  }
+  .hamburger {
+    top: 50%;
+    left: 10%;
+    width: 40px;
+    height: 7px;
+    background: var(--primary-burger-icon-bg-color);
+    position: absolute;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: 0.5s;
+    cursor: pointer;
+  }
+
+  .hamburger:before,
+  .hamburger:after {
+    cursor: pointer;
+    content: "";
+    position: absolute;
+    width: 40px;
+    left: 0;
+    height: 7px;
+    background: var(--primary-burger-icon-bg-color);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: 0.5s;
+  }
+
+  .hamburger:before {
+    top: -14px;
+  }
+
+  .hamburger:after {
+    top: 14px;
+  }
+}

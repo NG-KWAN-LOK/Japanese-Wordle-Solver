@@ -1,0 +1,36 @@
+@import "../../theme";
+.container {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  margin: 12px 0;
+}
+
+.container_input {
+  width: 48px;
+  text-transform: uppercase !important;
+  height: 48px;
+  font-weight: bold;
+  font-size: 32px;
+  text-align: center;
+  line-height: 48px;
+  border-radius: 2px;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: #fff;
+  padding: 0 !important;
+  margin: 0 2px 0 0 !important;
+  outline: none !important;
+  &-corr {
+    background: #6aaa64;
+  }
+  &-pos {
+    background: #c9b458;
+  }
+  &-none {
+    background: #787c7e;
+  }
+}

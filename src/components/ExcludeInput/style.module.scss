@@ -1,0 +1,26 @@
+@import "../../theme";
+.container {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  margin: 0 0 12px 0;
+}
+
+.container_input {
+  width: 375px;
+  height: 245px;
+  text-transform: uppercase !important;
+  text-align: center;
+  font-weight: bold;
+  font-size: 32px;
+  color: #fff;
+  line-height: 48px;
+  border-radius: 2px;
+  display: flex !important;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: #fff;
+  letter-spacing: 5px;
+  &-none {
+    background: #787c7e;
+  }
+}
