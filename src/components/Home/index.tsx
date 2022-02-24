@@ -6,16 +6,10 @@ import ColorButton from "../ColorButton";
 import ExcludeInput from "../ExcludeInput";
 import AnswerBox from "../AnswerBox";
 
+import { IInputText } from "../../utils/interface";
 import searchWord from "../../utils/process";
 
-interface IInputText {
-  [index: string]: {
-    char: string;
-    type: number;
-  };
-}
-
-const Home = () => {
+const Home: React.FC = () => {
   const [inputText, setInputText] = useState<IInputText>({
     charA: { char: "", type: 0 },
     charB: { char: "", type: 0 },

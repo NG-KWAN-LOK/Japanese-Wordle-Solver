@@ -1,4 +1,4 @@
-var words = [
+var words: string[] = [
   "ちいさな",
   "がくせい",
   "ぶたにく",

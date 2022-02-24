@@ -23,4 +23,9 @@
   &-none {
     background: #787c7e;
   }
+  &::placeholder {
+    color: #fff;
+    font-size: 14px;
+    letter-spacing: 0px;
+  }
 }

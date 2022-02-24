@@ -1,7 +1,15 @@
-import React, { useState, useCallback } from "react";
+import React from "react";
 import styles from "./style.module.scss";
 
-const ColorButton = ({ handleSetInputType, disable }) => {
+interface ColorButtonProps {
+  handleSetInputType: (e: object) => void;
+  disable: boolean;
+}
+
+const ColorButton: React.FC<ColorButtonProps> = ({
+  handleSetInputType,
+  disable,
+}) => {
   return (
     <div className={styles.container}>
       <button

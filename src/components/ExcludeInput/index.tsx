@@ -1,7 +1,13 @@
 import React, { useState, useCallback } from "react";
 import styles from "./style.module.scss";
 
-const ExcludeInput = ({ handleSetExcludeWord }) => {
+interface ExcludeInputProps {
+  handleSetExcludeWord: (e: object) => void;
+}
+
+const ExcludeInput: React.FC<ExcludeInputProps> = ({
+  handleSetExcludeWord,
+}) => {
   return (
     <div className={styles.container}>
       <textarea
@@ -11,6 +17,7 @@ const ExcludeInput = ({ handleSetExcludeWord }) => {
         rows={11}
         cols={3}
         onChange={handleSetExcludeWord}
+        placeholder="含まれていませんの仮名をここに入力してください"
       />
     </div>
   );

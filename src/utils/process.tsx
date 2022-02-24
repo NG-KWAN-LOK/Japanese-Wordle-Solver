@@ -1,13 +1,22 @@
 import words from "./words";
+import { IInputText } from "./interface";
 
 const inputCharIndex: string[] = ["charA", "charB", "charC", "charD"];
 let ans: string[] = [];
 
-const notCharInRightPos = (word, char, indexOf) => {
+const notCharInRightPos = (
+  word: string,
+  char: string,
+  indexOf: number
+): boolean => {
   return word[indexOf] != char ? true : false;
 };
 
-const notCharInWrongPos = (word, char, indexOf) => {
+const notCharInWrongPos = (
+  word: string,
+  char: string,
+  indexOf: number
+): boolean => {
   // console.log(inputChar);
   if (word.includes(char) && word[indexOf] != char) {
     return false;
@@ -15,7 +24,11 @@ const notCharInWrongPos = (word, char, indexOf) => {
   return true;
 };
 
-const isOccurrCountNotMatch = (word, inputChar, indexOf) => {
+const isOccurrCountNotMatch = (
+  word: string,
+  inputChar: IInputText,
+  indexOf: number
+): boolean => {
   const wordOccurrCount =
     word.split(inputChar[inputCharIndex[indexOf]].char).length - 1;
   let inputOccurrCount = 0;
@@ -29,7 +42,11 @@ const isOccurrCountNotMatch = (word, inputChar, indexOf) => {
   return wordOccurrCount < inputOccurrCount ? true : false;
 };
 
-const findCorrCharAns = (word, inputChar, excludeWord) => {
+const findCorrCharAns = (
+  word: string,
+  inputChar: IInputText,
+  excludeWord: string
+): void => {
   for (let i = 0; i < excludeWord.length; i++) {
     if (word.includes(excludeWord[i])) return;
   }
@@ -44,7 +61,7 @@ const findCorrCharAns = (word, inputChar, excludeWord) => {
   ans.push(word);
 };
 
-const searchWord = (inputChar, excludeWord) => {
+const searchWord = (inputChar: IInputText, excludeWord: string): string[] => {
   ans = [];
   // console.log(inputChar, excludeWord);
   words.forEach((word) => {

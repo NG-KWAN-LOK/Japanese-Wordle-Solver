@@ -1,11 +1,19 @@
 @import "../../theme";
 .container {
+  width: 100%;
+}
+
+.container_title {
   display: flex;
-  position: relative;
+  justify-content: center;
+  text-align: center;
+  font-size: 14px;
+}
+.container_content {
+  display: flex;
   justify-content: center;
   margin: 12px 0;
 }
-
 .container_input {
   width: 48px;
   text-transform: uppercase !important;
