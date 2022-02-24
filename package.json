@@ -16,7 +16,7 @@
     "web-vitals": "^1.0.1"
   },
   "engines": {
-    "node": "16.x"
+    "node": "15.x"
   },
   "scripts": {
     "start": "npm run build && node server.js",
