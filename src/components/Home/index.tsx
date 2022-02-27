@@ -7,7 +7,7 @@ import ExcludeInput from "../ExcludeInput";
 import AnswerBox from "../AnswerBox";
 
 import { IInputText } from "../../utils/interface";
-import searchWord from "../../utils/process";
+import getSuggestWords from "../../utils/process";
 
 const Home: React.FC = () => {
   const [inputText, setInputText] = useState<IInputText>({
@@ -70,7 +70,7 @@ const Home: React.FC = () => {
   };
 
   const handleSubmit = () => {
-    setAnswer(searchWord(inputText, excludeWord));
+    setAnswer(getSuggestWords(inputText, excludeWord));
   };
 
   const isEnterButtonDisable = () => {

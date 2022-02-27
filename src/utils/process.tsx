@@ -61,13 +61,63 @@ const findCorrCharAns = (
   ans.push(word);
 };
 
-const searchWord = (inputChar: IInputText, excludeWord: string): string[] => {
+const countCharFreqEachAnsWord = (charMap: {
+  [char: string]: number;
+}): { [char: string]: number } => {
+  ans.forEach((word) => {
+    for (let char of word) {
+      if (char in charMap) {
+        charMap[char] += 1;
+        continue;
+      }
+      charMap[char] = 1;
+    }
+  });
+  return charMap;
+};
+
+const countWordWeight = (
+  charMap: {
+    [char: string]: number;
+  },
+  ansMap: Array<{ word: string; weight: number }>
+): Array<{ word: string; weight: number }> => {
+  ans.forEach((word, index) => {
+    ansMap[index] = {
+      word: word,
+      weight: 0,
+    };
+    for (let char of word) {
+      ansMap[index].weight += charMap[char];
+    }
+  });
+  return ansMap;
+};
+
+const searchWord = (): string[] => {
+  let charMap: { [char: string]: number } = {};
+  let ansMap: Array<{ word: string; weight: number }> = [];
+  let ans: string[] = [];
+  countCharFreqEachAnsWord(charMap);
+  countWordWeight(charMap, ansMap);
+  ansMap.sort((a, b) => b.weight - a.weight);
+  ansMap.forEach((word) => {
+    ans.push(word.word);
+  });
+  return ans;
+};
+
+const getSuggestWords = (
+  inputChar: IInputText,
+  excludeWord: string
+): string[] => {
   ans = [];
   // console.log(inputChar, excludeWord);
   words.forEach((word) => {
     findCorrCharAns(word, inputChar, excludeWord);
   });
-  return ans;
+
+  return searchWord();
 };
 
-export default searchWord;
+export default getSuggestWords;

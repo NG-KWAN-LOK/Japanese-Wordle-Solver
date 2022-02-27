@@ -79,6 +79,7 @@ const InputBox: React.FC<InputBoxProps> = ({
     const { value, id } = e.target;
     const [fieldName, fieldIndex] = id.split("-");
     let fieldIntIndex = Number(fieldIndex);
+
     e.preventDefault();
     document
       .querySelector<HTMLInputElement>(
@@ -91,6 +92,7 @@ const InputBox: React.FC<InputBoxProps> = ({
     const { value, id } = e.target;
     const [fieldName, fieldIndex] = id.split("-");
     let fieldIntIndex = Number(fieldIndex);
+
     if (fieldIndex < 5) {
       if (value.length == 0) {
         e.preventDefault();
@@ -107,7 +109,6 @@ const InputBox: React.FC<InputBoxProps> = ({
     const { maxLength, value, id } = e.target;
     const [fieldName, fieldIndex] = id.split("-");
     let fieldIntIndex = Number(fieldIndex);
-    console.log("next", id);
 
     if (value.length >= maxLength && fieldIndex < 4) {
       document
