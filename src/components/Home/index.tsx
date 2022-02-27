@@ -22,22 +22,24 @@ const Home: React.FC = () => {
   const [excludeWord, setExcludeWord] = useState<string>("");
 
   const handleSetOnFocusField = useCallback(
-    (value) => {
-      setOnFocusField(value.target.name);
+    (e) => {
+      // console.log("onfocus :", e.target.name);
+      setOnFocusField(e.target.name);
     },
     [onFocusField]
   );
 
   const handleSetExcludeWord = useCallback(
-    (value) => {
-      setExcludeWord(value.target.value);
+    (e) => {
+      setExcludeWord(e.target.value);
     },
     [excludeWord]
   );
 
   const handleSetInputText = (e) => {
     let { name, value } = e.target;
-    value = value.replace(/ /g, "");
+    // value = value.replace(/ /g, "");
+    // console.log("inputTextValue:", value, e.target.id);
     setInputText({
       ...inputText,
       [name]: {
@@ -63,12 +65,21 @@ const Home: React.FC = () => {
     });
   };
 
-  const isDisable = () => {
+  const isColorButtonDisable = () => {
     return inputText[onFocusField].char === "" ? true : false;
   };
 
   const handleSubmit = () => {
     setAnswer(searchWord(inputText, excludeWord));
+  };
+
+  const isEnterButtonDisable = () => {
+    if (excludeWord.length != 0) return false;
+    let flag = true;
+    Object.keys(inputText).map((objectKey) => {
+      if (inputText[objectKey].char != "") flag = false;
+    });
+    return flag;
   };
 
   return (
@@ -80,7 +91,7 @@ const Home: React.FC = () => {
       />
       <ColorButton
         handleSetInputType={handleSetInputType}
-        disable={isDisable()}
+        disable={isColorButtonDisable()}
       />
       <ExcludeInput handleSetExcludeWord={handleSetExcludeWord} />
       <div className={styles.container_submit}>
@@ -89,6 +100,7 @@ const Home: React.FC = () => {
           type="submit"
           className={`${styles["container_button"]}`}
           onClick={handleSubmit}
+          disabled={isEnterButtonDisable()}
         >
           ⏎
         </button>
