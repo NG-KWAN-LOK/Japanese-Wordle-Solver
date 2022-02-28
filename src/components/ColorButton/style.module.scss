@@ -32,16 +32,46 @@
     cursor: default;
   }
   &-corr {
-    background: #6aaa64;
+    background: #22c55e;
     &:hover:not([disabled]) {
       background: #315e2d;
       transition: 0.5s;
     }
   }
   &-pos {
-    background: #c9b458;
+    background: #eab308;
     &:hover:not([disabled]) {
       background: #86752a;
+      transition: 0.5s;
+    }
+  }
+  &-col {
+    background: #9ca3af;
+    background-image: url(../../image/col.svg);
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    &:hover:not([disabled]) {
+      background: #5d6168;
+      background-image: url(../../image/col.svg);
+      background-position: 50%;
+      background-repeat: no-repeat;
+      background-size: auto 100%;
+      transition: 0.5s;
+    }
+  }
+  &-row {
+    background: #9ca3af;
+    background-image: url(../../image/row.svg);
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    &:hover:not([disabled]) {
+      background: #5d6168;
+      background-image: url(../../image/row.svg);
+      background-position: 50%;
+      background-repeat: no-repeat;
+      background-size: auto 100%;
       transition: 0.5s;
     }
   }

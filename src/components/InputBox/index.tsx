@@ -22,6 +22,12 @@ const InputBox: React.FC<InputBoxProps> = ({
     if (type == 2) {
       return styles["container_input-pos"];
     }
+    if (type == 3) {
+      return styles["container_input-col"];
+    }
+    if (type == 4) {
+      return styles["container_input-row"];
+    }
   };
 
   const handleCompsition = (e) => {

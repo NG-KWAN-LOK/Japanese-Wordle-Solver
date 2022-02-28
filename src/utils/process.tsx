@@ -1,5 +1,7 @@
 import words from "./words";
 import { IInputText } from "./interface";
+import { hiraganaToRome } from "./hiraganaTranform";
+import { col, row } from "./hint";
 
 const inputCharIndex: string[] = ["charA", "charB", "charC", "charD"];
 let ans: string[] = [];
@@ -42,6 +44,35 @@ const isOccurrCountNotMatch = (
   return wordOccurrCount < inputOccurrCount ? true : false;
 };
 
+const notCharNotInRow = (
+  word: string,
+  char: string,
+  indexOf: number
+): boolean => {
+  const rome = hiraganaToRome(char);
+  const posibleKana = row[rome.charAt(rome.length - 1)];
+  // console.log(rome, posibleKana);
+
+  for (let kana of posibleKana) {
+    if (word[indexOf] === kana && kana != char) return false;
+  }
+  return true;
+};
+
+const notCharNotInCol = (
+  word: string,
+  char: string,
+  indexOf: number
+): boolean => {
+  const posibleKana = col[hiraganaToRome(char).charAt(0)];
+  // console.log(hiraganaToRome(char), posibleKana, indexOf);
+
+  for (let kana of posibleKana) {
+    if (word[indexOf] === kana && kana != char) return false;
+  }
+  return true;
+};
+
 const findCorrCharAns = (
   word: string,
   inputChar: IInputText,
@@ -53,10 +84,18 @@ const findCorrCharAns = (
   for (let i = 0; i < inputCharIndex.length; i++) {
     if (inputChar[inputCharIndex[i]].type == 1) {
       if (notCharInRightPos(word, inputChar[inputCharIndex[i]].char, i)) return;
-    } else if (inputChar[inputCharIndex[i]].type == 2) {
-      if (notCharInWrongPos(word, inputChar[inputCharIndex[i]].char, i)) return;
+      // if (isOccurrCountNotMatch(word, inputChar, i)) return;
     }
-    if (isOccurrCountNotMatch(word, inputChar, i)) return;
+    if (inputChar[inputCharIndex[i]].type == 2) {
+      if (notCharInWrongPos(word, inputChar[inputCharIndex[i]].char, i)) return;
+      if (isOccurrCountNotMatch(word, inputChar, i)) return;
+    }
+    if (inputChar[inputCharIndex[i]].type == 3) {
+      if (notCharNotInCol(word, inputChar[inputCharIndex[i]].char, i)) return;
+    }
+    if (inputChar[inputCharIndex[i]].type == 4) {
+      if (notCharNotInRow(word, inputChar[inputCharIndex[i]].char, i)) return;
+    }
   }
   ans.push(word);
 };
@@ -65,7 +104,7 @@ const countCharFreqEachAnsWord = (charMap: {
   [char: string]: number;
 }): { [char: string]: number } => {
   ans.forEach((word) => {
-    for (let char of word) {
+    for (const char of word) {
       if (char in charMap) {
         charMap[char] += 1;
         continue;
@@ -82,19 +121,22 @@ const countWordWeight = (
   },
   ansMap: Array<{ word: string; weight: number }>
 ): Array<{ word: string; weight: number }> => {
-  ans.forEach((word, index) => {
+  ans.forEach((word: string, index: number) => {
     ansMap[index] = {
       word: word,
       weight: 0,
     };
-    for (let char of word) {
-      ansMap[index].weight += charMap[char];
+    for (let i = 0; i < word.length; i++) {
+      if (word.indexOf(word[i]) != i + 1) {
+        continue;
+      }
+      ansMap[index].weight += charMap[word[i]];
     }
   });
   return ansMap;
 };
 
-const searchWord = (): string[] => {
+const sortWord = (): string[] => {
   let charMap: { [char: string]: number } = {};
   let ansMap: Array<{ word: string; weight: number }> = [];
   let ans: string[] = [];
@@ -117,7 +159,7 @@ const getSuggestWords = (
     findCorrCharAns(word, inputChar, excludeWord);
   });
 
-  return searchWord();
+  return sortWord();
 };
 
 export default getSuggestWords;

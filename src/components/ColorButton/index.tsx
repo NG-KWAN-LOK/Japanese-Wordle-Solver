@@ -32,6 +32,22 @@ const ColorButton: React.FC<ColorButtonProps> = ({
       >
         違
       </button>
+      <button
+        name="col"
+        value={3}
+        type="submit"
+        className={`${styles["container_button"]} ${styles["container_button-col"]}`}
+        onClick={handleSetInputType}
+        disabled={disable}
+      ></button>
+      <button
+        name="row"
+        value={4}
+        type="submit"
+        className={`${styles["container_button"]} ${styles["container_button-row"]}`}
+        onClick={handleSetInputType}
+        disabled={disable}
+      ></button>
     </div>
   );
 };
