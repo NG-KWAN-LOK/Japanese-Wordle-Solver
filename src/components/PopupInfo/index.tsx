@@ -39,9 +39,7 @@ const PopupInfo: React.FC<PopupInfoProps> = ({ isPopup, handleClosePopup }) => {
           </button>
         </div>
         <div className={styles.container_layer_text}>
-          <p>
-            これは「言葉で遊ぼう」に沿って、答えを求めるの答えを求めるです。
-          </p>
+          <p>これは「言葉で遊ぼう」に沿って、答えを求めるのサイトです。</p>
           <p>This website is the solver of the Kotobade Asobou.</p>
         </div>
         <div className={styles.container_layer_text}>

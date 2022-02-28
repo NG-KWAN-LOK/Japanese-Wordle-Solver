@@ -1,7 +1,14 @@
-@import "./theme";
+@import "./utils/theme.scss";
 .container {
   width: 100%;
 }
 .content {
   width: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: "Noto Sans JP", "微軟正黑體", sans-serif;
 }
