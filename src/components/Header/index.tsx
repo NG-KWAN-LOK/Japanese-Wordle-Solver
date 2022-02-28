@@ -1,13 +1,18 @@
-import React from "react";
+import React, { useState, useCallback } from "react";
 import styles from "./style.module.scss";
 
 import PopupInfo from "../PopupInfo";
 
 const Header: React.FC = () => {
+  const [isPopup, setIsPopup] = useState<boolean>(false);
+  const handleClosePopup = useCallback((): void => {
+    setIsPopup(false);
+  }, [isPopup]);
   return (
     <header>
+      <PopupInfo isPopup={isPopup} handleClosePopup={handleClosePopup} />
       <div className={styles.header}>
-        <button>
+        <button onClick={() => setIsPopup(true)}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="24"

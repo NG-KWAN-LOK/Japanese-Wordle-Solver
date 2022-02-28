@@ -39,7 +39,9 @@ const ColorButton: React.FC<ColorButtonProps> = ({
         className={`${styles["container_button"]} ${styles["container_button-col"]}`}
         onClick={handleSetInputType}
         disabled={disable}
-      ></button>
+      >
+        縦
+      </button>
       <button
         name="row"
         value={4}
@@ -47,7 +49,9 @@ const ColorButton: React.FC<ColorButtonProps> = ({
         className={`${styles["container_button"]} ${styles["container_button-row"]}`}
         onClick={handleSetInputType}
         disabled={disable}
-      ></button>
+      >
+        横
+      </button>
     </div>
   );
 };
