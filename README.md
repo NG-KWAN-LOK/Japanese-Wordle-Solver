@@ -1,7 +1,8 @@
 # Japanese-Wordle-Solver
+
 ## heroku app page
 
-### https://japanese-wordle-solver.herokuapp.com/
+### https://kotoba-asobou-solver.sawajiri-ng.net/
 
 ## Installation
 
